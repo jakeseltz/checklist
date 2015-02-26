@@ -1,0 +1,96 @@
+<!-- The thought going forward for this simple app is to have the main "todo1..2" to be the header for the project. The drop down will be a list of checkboxes which specify each task. The main header will also display a very simply status bar representing how many tasks are to be done -->
+
+
+<div class="container">
+
+    <div class = "list-group-item">
+   <form role="form">
+        <button  id="button3" ng-click = "addTodo()" ></button>
+          <input id="inputBox1" type="text" ng-model="todo" cols='1' placeholder="+"/>
+      </form>
+    </div>
+
+
+<div class="row" ui-sortable ng-model = "todos">
+    <div class="input-group" ng-repeat = "todo in todos" >
+      <span class="input-group-addon">
+
+        <!--<input type="checkbox" aria-label=""  id="checkbox">-->
+        <!--<input type="button" ng-click = "toggle(todo)" class="glyphicon glyphicon-th-list">
+      <input type="button" ng-click = "removeTodo($index)" class="delete">-->
+         <button  ng-click = "optionMenuShow(todo)"></button>
+        <button id="button1" ng-click = "toggler(todo)" class=""></button>
+        <button id="button2" ng-click = "removeTodo($index)" class=""></button>
+
+
+      </span>
+
+      <span class = "input-group-addon" ng-show = todo.optionMenu === true>
+
+        <div class="btn-group-vertical" role="group" aria-label="...">
+          <button class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cloud"></span></button>
+        </div>
+
+      </span>
+      <div href=""  id="listGroup1" class="list-group-item" > 
+        {{todo.simpleDesc}} 
+
+        <!--{{todo.progressColorCode}}
+        {{completeCount(todo)}}
+        {{todo.optionMenu}}-->
+   
+
+
+
+
+
+        <div class="progress">
+        <div class="progress-bar progress-bar-item progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{completeCount(todo)}}%">
+          <span class="sr-only">{{completeCount(todo)}}% Complete</span>
+        </div>
+      </div>
+
+
+
+
+  <div class="row" id="todoTasks"  ng-model = "todo" ng-show = todo.toggle === true>
+
+     <div ui-sortable>
+        <div  class = "list-group-item" id= "subGroup">
+            <form role="form">
+              <button  id="button3" ng-click = "addItem(todo,todo.list.item)"></button>
+          <input id="inputBox2" type="text" ng-model="todo.list.item" placeholder="+">
+      </form>
+    </div>
+
+
+
+
+
+            <div id="allTasks" class="input-group" ng-repeat = "task in todo.list" id="taskItem" >
+                <span class="input-group-addon">
+                   <input type="checkbox" ng-model = "task.done"
+                 ng-true-value= "true" ng-false-value= "false" >
+                    <button  id="button4" ng-click = "removeItem(todo,$index)"></button>
+                </span>
+              
+                <div href=""  class="list-group-item" >
+                  {{task.item}}
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
